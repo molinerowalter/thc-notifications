@@ -1,19 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import type { UserToRegister } from '@/features/register/types';
+import type { UserRegisterForm } from '@/features/register/types';
 import { FormField } from '@/components/ui/formField';
 import { REGISTER_FIELDS, FIELDS } from '@/common/constants'; 
 import registerUser from '@/features/register/services'
 
 const RegisterForm = () => {
-    const { control, handleSubmit, watch } = useForm<UserToRegister>();
+    const { control, handleSubmit, watch } = useForm<UserRegisterForm>();
     const passwordValue = watch("password");
 
-    const onSubmit = (data: UserToRegister) => {
+    const onSubmit = (data: UserRegisterForm) => {
         console.log("1")
-        registerUser(data)
+        const {password_validation, ...body} = data;
+        registerUser(body);
         console.log("4")
-        alert(`Form submitted with data: ${JSON.stringify(data)}`);
+        alert(`Form submitted with data: ${JSON.stringify(body)}`);
     }; 
 
     return (

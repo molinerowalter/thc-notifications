@@ -4,10 +4,15 @@ interface UserToRegister {
     email: string;
     country_code: string;
     phone: string;
+    username: string;
     password: string;
+}
+
+interface UserRegisterForm extends UserToRegister {
     password_validation: string;
 }
 
 export type {
-    UserToRegister
+    UserToRegister,
+    UserRegisterForm
 }

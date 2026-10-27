@@ -1,8 +1,8 @@
 import type { RegisterOptions, Path } from "react-hook-form";
-import type { UserToRegister } from "@/features/register/types";
+import type { UserToRegister, UserRegisterForm } from "@/features/register/types";
 
-// 1. La interfaz recibe el tipo del formulario (por defecto UserToRegister)
-export interface FieldConfig<T extends object = UserToRegister> {
+// 1. La interfaz recibe el tipo del formulario (por defecto UserRegisterForm)
+export interface FieldConfig<T extends object = UserRegisterForm> {
     id: Path<T>;
     label: string;
     type?: string;
@@ -56,20 +56,29 @@ export const FIELDS = {
         required: "Last Name is required", 
       }
     },
-    password: {
-        id: 'password',
-        label: 'Password',
-        type: 'password',
-        placeholder: '••••••••',
-        rules: { 
-            required: "Password is required", 
-            pattern: { 
-                value: /^(?=.*[!@#$%^&*])/,
-                message: "Password must include a special character" 
-            } 
-        }
+    'username': {
+      id: 'username',
+      label: 'Username',
+      type: 'text',
+      placeholder: 'John.Doe',
+      rules: { 
+        required: "Username is required", 
+      }
     },
-    'password-validator': {
+    password: {
+      id: 'password',
+      label: 'Password',
+      type: 'password',
+      placeholder: '••••••••',
+      rules: { 
+          required: "Password is required", 
+          pattern: { 
+              value: /^(?=.*[!@#$%^&*])/,
+              message: "Password must include a special character" 
+          } 
+      }
+    },
+    'password_validation': {
       id: 'password_validation',
       label: 'Password Validation',
       type: 'password',
@@ -91,9 +100,10 @@ export const FIELDS = {
 } as const satisfies Record<string, FieldConfig<UserToRegister>>;
 
 // 3. Tipamos los arrays de campos como tuplas de literales válidos de UserToRegister
-export const REGISTER_FIELDS: Array<Path<UserToRegister>> = [
+export const REGISTER_FIELDS: Array<Path<UserRegisterForm>> = [
     'first_name', 
-    'last_name', 
+    'last_name',
+    'username', 
     'email', 
     'country_code', 
     'phone', 

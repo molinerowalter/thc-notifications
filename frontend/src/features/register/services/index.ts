@@ -1,10 +1,8 @@
-import axios from "axios";
+import api from "@/common/services"
 import type { UserToRegister } from "../types" 
 
 const registerUser = (newUser: UserToRegister) => {
-    return axios.post(`user`, {
-        body: JSON.stringify(newUser),
-    }).then(response => {
+    return api.post(`api/users/`, newUser).then(response => {
         console.log("response: ", response.data)
     }).catch(err => {
         console.log("err: ", err)
