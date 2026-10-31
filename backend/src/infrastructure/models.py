@@ -47,7 +47,7 @@ class User(Base):
   country_code: Mapped[str] = mapped_column(String(3), nullable=False)
   phone: Mapped[str] = mapped_column(String(10), nullable=False, unique=True)
   email: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
-  password: Mapped[str] = mapped_column(String(200), nullable=False)
+  hashed_password: Mapped[str] = mapped_column(String(200), nullable=False)
   sent: Mapped[list[Notification]] = relationship(
       foreign_keys=[Notification.sender],
   )

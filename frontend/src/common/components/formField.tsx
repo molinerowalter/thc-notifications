@@ -1,6 +1,6 @@
 import { Controller, type Control, type RegisterOptions, type FieldValues, type Path } from "react-hook-form";
-import { Input } from '@/components/ui/input';
-import { FieldError } from '@/components/ui/field';
+import { Input } from '@/common/components/input';
+import { FieldError } from '@/common/components/field';
 
 export interface FormFieldProps<T extends FieldValues> {
     name: Path<T>;

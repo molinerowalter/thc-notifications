@@ -7,8 +7,8 @@ import {
   type Locale,
 } from "react-day-picker"
 
-import { Button } from "@/components/ui/button"
-import buttonVariants from "@/components/ui/buttonVariants"
+import { Button } from "@/common/components/button"
+import buttonVariants from "@/common/components/buttonVariants"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { ArrowLeftIcon, ArrowRightIcon, ArrowDownIcon } from "@hugeicons/core-free-icons"
 

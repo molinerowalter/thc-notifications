@@ -20,6 +20,7 @@ app = FastAPI()
 origins = [settings.frontend_url]
 
 app.include_router(users.router, prefix="/api/users", tags=["users"])
+app.include_router(notifications.router, prefix="/api/notifications", tags=["notifications"])
 
 app.add_middleware(
   CORSMiddleware,
@@ -28,8 +29,6 @@ app.add_middleware(
   allow_methods=["*"],  # Permite todos los métodos (GET, POST, OPTIONS, etc.)
   allow_headers=["*"],  # Permite todos los headers
 )
-
-#app.include_router(notifications.router, prefix="/api/notifications", tags=["notifications"])
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

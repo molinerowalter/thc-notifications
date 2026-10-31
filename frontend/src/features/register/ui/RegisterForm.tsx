@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/common/components/button";
 import type { UserRegisterForm } from '@/features/register/types';
-import { FormField } from '@/components/ui/formField';
+import { FormField } from '@/common/components/formField';
 import { REGISTER_FIELDS, FIELDS } from '@/common/constants'; 
 import registerUser from '@/features/register/services'
 
@@ -11,15 +11,12 @@ const RegisterForm = () => {
     const passwordValue = watch("password");
 
     const onSubmit = (data: UserRegisterForm) => {
-        console.log("1")
         const {password_validation, ...body} = data;
         registerUser(body);
-        console.log("4")
-        alert(`Form submitted with data: ${JSON.stringify(body)}`);
     }; 
 
     return (
-        <div className="flex min-h-screen items-center justify-center bg-slate-900 px-4">
+        <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4">
             <form 
                 className="auth-card flex flex-col space-y-5 bg-white shadow-2xl" 
                 onSubmit={handleSubmit(onSubmit)}
@@ -39,7 +36,7 @@ const RegisterForm = () => {
                     return (
                         <FormField
                             key={fieldConfig.id}
-                            name={fieldConfig.id} // <--- ¡Tipado 100% estricto sin 'any'!
+                            name={fieldConfig.id}
                             control={control}
                             type={fieldConfig.type}
                             label={fieldConfig.label}

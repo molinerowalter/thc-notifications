@@ -3,7 +3,7 @@ import type { UserToRegister } from "../types"
 
 const registerUser = (newUser: UserToRegister) => {
     return api.post(`api/users/`, newUser).then(response => {
-        console.log("response: ", response.data)
+        console.log("Created User: ", response.data)
     }).catch(err => {
         console.log("err: ", err)
         return false

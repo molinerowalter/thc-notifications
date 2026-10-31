@@ -1,18 +1,35 @@
+import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/common/components/button";
 import type { UserCredentials } from '@/features/login/types';
-import { FormField } from '@/components/ui/formField';
+import { FormField } from '@/common/components/formField';
+import login from '@/features/login/services'
+import { useAuth } from "../hooks/useAuth";
+import { toast } from '@/common/components/toast';
 
 const LoginForm = () => {
     const { control, handleSubmit } = useForm<UserCredentials>();
+    const navigate = useNavigate();
+    const { setToken } = useAuth();
 
     // Form submission handler
-    const onSubmit = (data: UserCredentials) => {
+    const onSubmit = async (data: UserCredentials) => {
         alert(`Form submitted with data: ${JSON.stringify(data)}`);
+        try {
+            const response = await login(data);
+            setToken(response?.access_token);
+            navigate(`/${data.username}`)
+        } catch(err) {
+            console.log("singinERROR: ", err)
+            toast.add({
+                type: "error",
+                description: "Invalid data"
+            })
+        }
     }; 
 
     return (
-        <div className="flex min-h-screen items-center justify-center bg-slate-900 px-4">
+        <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4">
             <form 
                 className="auth-card flex flex-col space-y-5 bg-white shadow-2xl" 
                 onSubmit={handleSubmit(onSubmit)}
@@ -26,17 +43,13 @@ const LoginForm = () => {
                     </p>
                 </div>
                 <FormField
-                    name="email"
+                    name="username"
                     control={control}
-                    label="Email Address"
-                    type="email"
-                    placeholder="name@example.com"
+                    label="Username"
+                    type="text"
+                    placeholder="john.doe"
                     rules={{ 
-                        required: "Email is required", 
-                        pattern: { 
-                            value: /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9.-]+\.)+[a-zA-Z]{2,4}$/,
-                            message: "Please enter a valid email address ending in .com" 
-                        } 
+                        required: "UserName is required"
                     }}
                 />
                 <FormField

@@ -97,7 +97,7 @@ export const FIELDS = {
         } 
       }
     }
-} as const satisfies Record<string, FieldConfig<UserToRegister>>;
+} as const satisfies Record<string, FieldConfig<UserRegisterForm>>;
 
 // 3. Tipamos los arrays de campos como tuplas de literales válidos de UserToRegister
 export const REGISTER_FIELDS: Array<Path<UserRegisterForm>> = [
