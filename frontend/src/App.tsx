@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
-import LoginForm from './features/login/ui/LoginForm'
+import LoginForm from './features/login/ui/Form'
 import RegisterForm from './features/register/ui/RegisterForm';
-import NotificationForm from './features/notifications/ui/Create';
+import Profile from './features/notifications/ui/History';
 import Header from './components/layout/Header';
 import AuthProvider from './features/login/context/AuthProvider';
 
@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/signin" element={<div className="background-img"><LoginForm /></div>} />
           <Route path="/register" element={<div className="background-img"><RegisterForm /></div>} />
-          <Route path="/profile" element={<div className="main-container"><NotificationForm /></div>} />
+          <Route path="/profile" element={<div className="main-container"><Profile /></div>} />
         </Routes>
       </section>
     </AuthProvider> 

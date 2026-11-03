@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr, ConfigDict
 from typing import List
-from src.schemas.notification import NotificationBase
+from src.schemas.notification import NotificationResponse
 
 class UserBase(BaseModel):
   email: EmailStr
@@ -31,8 +31,8 @@ class UserPrivate(UserPublic):
   
   country_code: str
   phone: str
-  sent: List[NotificationBase]
-  received: List[NotificationBase]
+  sent: List[NotificationResponse]
+  received: List[NotificationResponse]
 
 class Token(BaseModel):
   access_token: str

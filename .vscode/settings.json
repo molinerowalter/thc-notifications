@@ -4,5 +4,14 @@
     "css.validate": false, // Desactiva el validador CSS por defecto de VS Code para evitar falsos positivos
     "editor.quickSuggestions": {
         "strings": "on"
-    }
+    },
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 2
+    },
+    "[typescript]": {
+        "editor.tabSize": 2
+    },
 }

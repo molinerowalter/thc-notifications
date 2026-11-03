@@ -1,7 +1,7 @@
 from __future__ import annotations
 from datetime import UTC, datetime
 
-from sqlalchemy import Enum, ForeignKey, String, Boolean, Integer, DateTime
+from sqlalchemy import Enum, ForeignKey, String, Boolean, Integer, DateTime, desc
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.infrastructure.database import Base
@@ -50,7 +50,9 @@ class User(Base):
   hashed_password: Mapped[str] = mapped_column(String(200), nullable=False)
   sent: Mapped[list[Notification]] = relationship(
       foreign_keys=[Notification.sender],
+      order_by=desc(Notification.created_at),
   )
   received: Mapped[list[Notification]] = relationship(
       foreign_keys=[Notification.recipient],
+      order_by=desc(Notification.created_at),
   )

@@ -1,15 +1,15 @@
 interface UserToRegister {
-    first_name: string;
-    last_name: string;
+    'first-name': string;
+    'last-name': string;
     email: string;
-    country_code: string;
+    'country-code': string;
     phone: string;
     username: string;
     password: string;
 }
 
 interface UserRegisterForm extends UserToRegister {
-    password_validation: string;
+    'password-validation': string;
 }
 
 export type {

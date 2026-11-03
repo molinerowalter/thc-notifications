@@ -15,8 +15,8 @@ interface Form<T extends Field> {
 interface LoggedUser {
     id: string;
     email: string;
-    first_name: string;
-    last_name: string;
+    'first-name': string;
+    'last-name': string;
     username: string;
     phone: string;
     token: string;

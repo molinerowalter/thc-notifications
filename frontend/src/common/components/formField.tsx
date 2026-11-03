@@ -38,7 +38,7 @@ export function FormField<T extends FieldValues>({
                             {...field} 
                         />
                         {error && (
-                            <FieldError className="text-rose-500 text-xs mt-1">
+                            <FieldError className="field-error">
                                 {error.message}
                             </FieldError>
                         )}

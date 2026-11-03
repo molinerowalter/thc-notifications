@@ -60,3 +60,14 @@ async def agenda(db: Annotated[AsyncSession, Depends(get_db)]):
   result = await db.execute(user_with_notifications()) 
 
   return result.scalars().all()
+
+@router.get("/{username}", response_model=UserPrivate)
+async def get_user(username: str, db: Annotated[AsyncSession, Depends(get_db)]):
+  result = await db.execute(user_with_notifications().where(func.lower(models.User.username) == username.lower()))
+
+  user_search = result.scalars().one_or_none()
+
+  if (user_search is None): 
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+
+  return user_search
