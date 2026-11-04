@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 
+backend/firebase-admin-sdk.json
+
 frontend/.env
 backend/.env
 .env

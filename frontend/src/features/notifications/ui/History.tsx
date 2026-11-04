@@ -3,7 +3,7 @@ import { Pagination } from "@/common/components/pagination"
 import { Textarea } from "@/common/components/textarea";
 import { Toast } from "@/common/components/toast";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NotificationsTable from "@/features/notifications/ui/Table"
 import { useLoggedUser } from "@/features/login/hooks/useUser"
 import { CreateNotificationForm } from "@/features/notifications/ui/Create"
@@ -12,9 +12,8 @@ const NotificationHistory = () => {
 	const { userData } = useLoggedUser()
 	const [openForm, setOpenForm] = useState(false);
 
-	console.log("NotificationHistory userData:", userData);
 	if (!userData) {
-			return null
+		return null
 	}
 
 	const { 

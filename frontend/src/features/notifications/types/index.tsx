@@ -20,6 +20,11 @@ interface NotificationsTableProps {
     notifications: Notification[];
 }
 
+interface FirebaseTokenBody {
+    userId: string;
+    token: string; 
+}
+
 type CreateNotificationForm = WebNotificationForm | SMSNotificationForm
 
-export type { Notification, NotificationChannel, NotificationsTableProps, SMSNotificationForm, WebNotificationForm, CreateNotificationForm };
+export type { Notification, NotificationChannel, NotificationsTableProps, SMSNotificationForm, WebNotificationForm, CreateNotificationForm, FirebaseTokenBody };

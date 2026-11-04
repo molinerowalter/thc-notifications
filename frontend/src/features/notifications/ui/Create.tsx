@@ -31,12 +31,15 @@ export const CreateNotificationForm = ({ open, onClose }: CreateNotificationForm
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open, onClose]);
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
+    let response;
     try {
-      console.log("data: ", data);
-      createNotification({ ...data, sender: username });
+      response = await createNotification({ ...data, sender: username });
     } catch (err) {
       console.log("Error creating notification: ", err);
+    } finally {
+      console.log("Notification created: ", response);
+      onClose();
     }
   }
 

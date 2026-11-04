@@ -1,5 +1,5 @@
 import api from "@/common/services"
-import type { UserCredentials } from "../types" 
+import type { UserCredentials } from "../types"
 
 export const login = (credentials: UserCredentials) => {
     return api.post(`api/users/signin`, credentials).then(response => {

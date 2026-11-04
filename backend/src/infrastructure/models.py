@@ -17,7 +17,7 @@ class Notification(Base):
   __tablename__ = "notifications"
 
   id: Mapped[int] = mapped_column(Integer, primary_key=True)
-  title: Mapped[str] = mapped_column(String(50), nullable=False)
+  title: Mapped[str] = mapped_column(String(50), nullable=True)
   content: Mapped[str] = mapped_column(String(200), nullable=False)
   channel: Mapped[Channel] = mapped_column(
       Enum(
@@ -56,3 +56,9 @@ class User(Base):
       foreign_keys=[Notification.recipient],
       order_by=desc(Notification.created_at),
   )
+
+class Firebase(Base):
+   __tablename__ = "firebase"
+
+   userId: Mapped[str] = mapped_column(String(50),primary_key=True, unique=True, nullable=False)
+   token: Mapped[str] = mapped_column(String(200), nullable=False)

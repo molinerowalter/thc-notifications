@@ -14,13 +14,17 @@ from src.schemas.user import UserToRegister
 from src.infrastructure.database import engine
 from src.config import settings
 
+import firebase_admin
+from firebase_admin import credentials, messaging
+
+cred = credentials.Certificate("firebase-admin-sdk.json")
+firebase_admin.initialize_app(cred)
+
+
 app = FastAPI()
 
 # Configura los orígenes que tienen permiso para hablar con tu backend
-origins = [settings.frontend_url]
-
-app.include_router(users.router, prefix="/api/users", tags=["users"])
-app.include_router(notifications.router, prefix="/api/notifications", tags=["notifications"])
+origins = [settings.frontend_url, "http://127.0.0.1:5173"]
 
 app.add_middleware(
   CORSMiddleware,
@@ -29,6 +33,9 @@ app.add_middleware(
   allow_methods=["*"],  # Permite todos los métodos (GET, POST, OPTIONS, etc.)
   allow_headers=["*"],  # Permite todos los headers
 )
+
+app.include_router(users.router, prefix="/api/users", tags=["users"])
+app.include_router(notifications.router, prefix="/api/notifications", tags=["notifications"])
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
