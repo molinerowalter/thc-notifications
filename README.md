@@ -1,4 +1,4 @@
-### Notifications Delivery - Take Home Challenge
+# Notifications Delivery - Take Home Challenge
 
 **- This project it was developed to solve the following takehome challenge:**
 
@@ -8,14 +8,15 @@ canales.
 
  > Full challenge details can be found in takehome-challenge.txt
 
-## REQUIREMENTS AND BUILD
+## Requirements & Build Steps
 
 1. Clean ports **5173**, **8000** & **5432**
-2. Install docker if you don't have it and run `docker compose up` on your terminal.
+2. Clone the repo: `git clone https://github.com/molinerowalter/thc-notifications.git`
+3. Install docker if you don't have it and run `docker compose up` on your terminal.
 
-## CONSIDERATIONS
+## Considerations
 
-# Backend
+### Backend
 
 *APPLIED*
 1. Built with Python, FastAPI and SQLAlchemy
@@ -28,7 +29,7 @@ canales.
 
 > It should be a new Post instead of a Patch. Or in the other way this could be a HUGE error regarding to UX.
 
-# Frontend
+### Frontend
 
 *APPLIED*
 1. Stack: Vite, ReactJS, TypeScript, Tailwind, Shadcn
