@@ -9,6 +9,7 @@ class Settings(BaseSettings):
 
   frontend_url: str
   database_url: str
+  testing_database_url: str
 
   secret_key: SecretStr
   algorithm: str = 'HS256'
